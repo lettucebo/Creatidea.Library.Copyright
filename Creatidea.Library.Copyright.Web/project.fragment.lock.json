@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "exports": {
+    "Creatidea.Library.Copyright.Library/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Creatidea.Library.Copyright.Library.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Creatidea.Library.Copyright.Library.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Creatidea.Library.Copyright.Library.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Creatidea.Library.Copyright.Service/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Creatidea.Library.Copyright.Service.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Creatidea.Library.Copyright.Service.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Creatidea.Library.Copyright.Service.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
