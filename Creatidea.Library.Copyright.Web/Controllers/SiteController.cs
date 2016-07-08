@@ -9,13 +9,10 @@ using Creatidea.Library.Copyright.Web.Models;
 
 namespace Creatidea.Library.Copyright.Web.Controllers
 {
-    public class SiteController : Controller
+    public class SiteController : BaseController
     {
-        private readonly CopyrightsContext _context;
-
-        public SiteController(CopyrightsContext context)
+        public SiteController(CopyrightsContext context) : base(context)
         {
-            _context = context;    
         }
 
         // GET: Sites
