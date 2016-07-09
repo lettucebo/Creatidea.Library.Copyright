@@ -3,13 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Creatidea.Library.Copyright.Web.Models;
 
 namespace Creatidea.Library.Copyright.Web.Migrations
 {
+    using Creatidea.Library.Copyright.Library.Models;
+
     [DbContext(typeof(CopyrightsContext))]
-    [Migration("20160707084658_Mig003")]
-    partial class Mig003
+    [Migration("20160709102021_Mig004")]
+    partial class Mig004
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,7 +18,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Machine", b =>
+            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Host", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +51,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
 
                     b.HasIndex("SiteId");
 
-                    b.ToTable("Machines");
+                    b.ToTable("Hosts");
                 });
 
             modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Site", b =>
@@ -119,7 +120,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
                     b.ToTable("SiteIps");
                 });
 
-            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Machine", b =>
+            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Host", b =>
                 {
                     b.HasOne("Creatidea.Library.Copyright.Web.Models.Site", "Site")
                         .WithMany("Machines")

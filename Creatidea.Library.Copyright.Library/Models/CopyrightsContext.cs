@@ -1,6 +1,9 @@
-﻿namespace Creatidea.Library.Copyright.Web.Models
+﻿namespace Creatidea.Library.Copyright.Library.Models
 {
-    using Creatidea.Library.Copyright.Library.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata;

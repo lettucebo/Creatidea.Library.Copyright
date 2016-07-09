@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Creatidea.Library.Copyright.Web.Migrations
 {
-    public partial class Mig001 : Migration
+    public partial class Mig004 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,12 +12,12 @@ namespace Creatidea.Library.Copyright.Web.Migrations
                 name: "Sites",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreateTime = table.Column<DateTime>(nullable: false),
-                    DefaultAction = table.Column<int>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false, defaultValueSql: "newsequentialid()"),
+                    CreateTime = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
+                    DefaultAction = table.Column<int>(nullable: false, defaultValueSql: "2"),
                     IsDelete = table.Column<bool>(nullable: false),
                     Modifier = table.Column<Guid>(nullable: true),
-                    ModifyTime = table.Column<DateTime>(nullable: true),
+                    ModifyTime = table.Column<DateTime>(type: "datetime", nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -26,57 +26,57 @@ namespace Creatidea.Library.Copyright.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Machines",
+                name: "Hosts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Action = table.Column<int>(nullable: false),
-                    CreateTime = table.Column<DateTime>(nullable: false),
-                    MachineKey = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false, defaultValueSql: "newsequentialid()"),
+                    Action = table.Column<int>(nullable: false, defaultValueSql: "2"),
+                    CreateTime = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
+                    MachineKey = table.Column<Guid>(nullable: false, defaultValueSql: "newid()"),
                     Modifier = table.Column<Guid>(nullable: true),
-                    ModifyTime = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    ModifyTime = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     SiteId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Machines", x => x.Id);
+                    table.PrimaryKey("PK_Hosts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Machines_Sites_SiteId",
+                        name: "FK_Machines_Sites",
                         column: x => x.SiteId,
                         principalTable: "Sites",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SiteIps",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Action = table.Column<int>(nullable: false),
-                    Address = table.Column<string>(nullable: true),
-                    CreateTime = table.Column<DateTime>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false, defaultValueSql: "newsequentialid()"),
+                    Action = table.Column<int>(nullable: false, defaultValueSql: "2"),
+                    Address = table.Column<string>(nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
                     Modifier = table.Column<Guid>(nullable: true),
-                    ModifyTime = table.Column<DateTime>(nullable: true),
+                    ModifyTime = table.Column<DateTime>(type: "datetime", nullable: true),
                     SiteId = table.Column<Guid>(nullable: false),
                     Type = table.Column<int>(nullable: false),
-                    Url = table.Column<string>(nullable: true)
+                    Url = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SiteIps", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SiteIps_Sites_SiteId",
+                        name: "FK_SiteIps_Sites",
                         column: x => x.SiteId,
                         principalTable: "Sites",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Machines_SiteId",
-                table: "Machines",
+                name: "IX_Hosts_SiteId",
+                table: "Hosts",
                 column: "SiteId");
 
             migrationBuilder.CreateIndex(
@@ -88,7 +88,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Machines");
+                name: "Hosts");
 
             migrationBuilder.DropTable(
                 name: "SiteIps");

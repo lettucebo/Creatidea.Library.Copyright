@@ -16,7 +16,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Machine", b =>
+            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Host", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
 
                     b.HasIndex("SiteId");
 
-                    b.ToTable("Machines");
+                    b.ToTable("Hosts");
                 });
 
             modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Site", b =>
@@ -118,7 +118,7 @@ namespace Creatidea.Library.Copyright.Web.Migrations
                     b.ToTable("SiteIps");
                 });
 
-            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Machine", b =>
+            modelBuilder.Entity("Creatidea.Library.Copyright.Web.Models.Host", b =>
                 {
                     b.HasOne("Creatidea.Library.Copyright.Web.Models.Site", "Site")
                         .WithMany("Machines")

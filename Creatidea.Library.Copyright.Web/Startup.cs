@@ -10,7 +10,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Creatidea.Library.Copyright.Web
 {
-    using Creatidea.Library.Copyright.Web.Models;
+    using Creatidea.Library.Copyright.Library.Models;
+
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
 

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Creatidea.Library.Copyright.Web.Controllers
 {
-    using Creatidea.Library.Copyright.Web.Models;
+    using Creatidea.Library.Copyright.Library.Models;
 
     public class BaseController : Controller
     {

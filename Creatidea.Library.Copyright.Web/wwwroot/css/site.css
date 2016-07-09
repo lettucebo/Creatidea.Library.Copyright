@@ -1,0 +1,9 @@
+﻿@import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
+
+body {
+    font-family: 'cwTeXHei',"微軟正黑體", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'cwTeXHei',"微軟正黑體", sans-serif;
+}

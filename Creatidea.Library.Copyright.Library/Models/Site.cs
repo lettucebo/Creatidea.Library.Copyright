@@ -1,4 +1,4 @@
-﻿namespace Creatidea.Library.Copyright.Web.Models
+﻿namespace Creatidea.Library.Copyright.Library.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using Creatidea.Library.Copyright.Library.Enums;
+    using Creatidea.Library.Copyright.Library.Models;
 
     public partial class Site
     {

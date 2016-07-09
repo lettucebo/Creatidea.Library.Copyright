@@ -10,16 +10,17 @@ namespace Creatidea.Library.Copyright.Web.Controllers
 {
     using Creatidea.Library.Copyright.Library.Models;
 
-    public class SiteController : BaseController
+    public class HostController : BaseController
     {
-        public SiteController(CopyrightsContext context) : base(context)
+        public HostController(CopyrightsContext context) : base(context)
         {
         }
 
         // GET: Sites
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Guid? id)
         {
-            return View(await _context.Sites.ToListAsync());
+            var data = await _context.Hosts.Where(x => x.SiteId == id).ToListAsync();
+            return View(data);
         }
 
         // GET: Sites/Details/5
@@ -40,7 +41,7 @@ namespace Creatidea.Library.Copyright.Web.Controllers
         }
 
         // GET: Sites/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid? id)
         {
             return View();
         }
@@ -50,16 +51,18 @@ namespace Creatidea.Library.Copyright.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CreateTime,DefaultAction,IsDelete,Modifier,ModifyTime,Name")] Site site)
+        public async Task<IActionResult> Create([Bind("Id,Action,Name")] Host model, Guid siteId)
         {
             if (ModelState.IsValid)
             {
-                site.Id = Guid.NewGuid();
-                _context.Add(site);
+                model.Id = Guid.NewGuid();
+                model.SiteId = siteId;
+                model.CreateTime = DateTime.Now;
+                _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(site);
+            return View(model);
         }
 
         // GET: Sites/Edit/5
